@@ -1,0 +1,70 @@
+{
+  "name": "groupproject_big-papi_ui",
+  "version": "1.0.0",
+  "description": "Bynder UI",
+  "main": "index.js",
+  "engines": {
+    "node": "10.x",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "#start": "UI server. HMR is enabled in dev mode.",
+    "start": "nodemon -w dist -w .env dist/server.js",
+    "#lint": "Runs ESLint on all relevant files",
+    "lint": "eslint server src browser --ext js,jsx",
+    "#compile": "Generates JS bundles for production. Use with start.",
+    "compile": "webpack --mode production",
+    "#watch-server-hmr": "Recompile server HMR bundle on changes.",
+    "watch-server-hmr": "webpack -w --config webpack.serverHMR.js",
+    "#dev-all": "Dev mode: watch for server changes and start UI server",
+    "dev-all": "rm dist/* && npm run watch-server-hmr & sleep 5 && npm start",
+    "heroku-postbuild": "npm run compile && ln -fs ../node_modules/bootstrap/dist public/bootstrap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_Big-pAPI_UI"
+  },
+  "author": "Grant Levy",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.1",
+    "http-proxy-middleware": "^0.21.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jwt-decode": "^2.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^1.18.9",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^0.33.1",
+    "react-datepicker": "^3.1.3",
+    "react-dom": "^16.13.1",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^4.3.1",
+    "serialize-javascript": "^1.9.1",
+    "source-map-support": "^0.5.19",
+    "url-search-params": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.2",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
